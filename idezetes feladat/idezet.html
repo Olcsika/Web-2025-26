@@ -1,0 +1,102 @@
+<!--bootstrap az oldal kozepen nagy meretben 50% BAN KIS MERET5BEN 100% legyen kitoltve a tartalom jelenjen meg a tartalomban valmilyen szinben egy teglalap ebben a téglalapban jelenjen meg egy idezet az idezet egy tarbol jojjon szoval kell egy idezet szoveg 5mp utan egy ujjab idezetaz elozo ele egyszerre maximum harom idezet.
++ aki tud animáljon-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idézet csináló</title>
+    <link rel="stylesheet" href="idezet.css">
+    <script src="idezet.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        #teglalap {
+            width: 50%;
+            max-width: 600px;
+            min-width: 300px;
+            height: 300px;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        #idezetek {
+            width: 90%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+        }
+        #idezetek div {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            text-align: center;
+            font-size: 1.2em;
+            padding: 10px;
+        }
+    </style>
+    <div id="teglalap">
+        <div id="idezetek">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script>
+        const idezetek = [
+            "Az élet olyan, mint egy bicikli. Ahhoz, hogy egyensúlyban maradj, mozognod kell. - Albert Einstein",
+            "A siker nem a véletlen műve, hanem a kemény munka eredménye. - Colin Powell",
+            "Ne félj a kudarcoktól, mert azok az útjelzők a siker felé vezető úton. - Oprah Winfrey",
+            "Az igazi bátorság nem az, hogy soha nem félsz, hanem az, hogy szembenézel a félelmeiddel. - Nelson Mandela",
+            "Az élet rövid, de a művészet örök. - Leonardo da Vinci",
+            "A boldogság nem a cél, hanem az út maga. - Buddha",
+            "A tudás hatalom. - Francis Bacon",
+            "Az álmaidat kövesd, mert csak így érheted el a csillagokat. - Walt Disney",
+            "A szeretet a legerősebb fegyver a világon. - Mahatma Gandhi",
+            "Az idő pénz, de az időt nem lehet visszaszerezni. - Benjamin Franklin"
+        ];
+
+        let currentIndex = 0;
+        const idezetDivs = document.querySelectorAll('#idezetek div');
+
+        function showNextIdezet() {
+            // Clear all divs
+            idezetDivs.forEach(div => div.style.opacity = 0);
+
+            // Show the next quote
+            idezetDivs[currentIndex % 3].textContent = idezetek[currentIndex];
+            idezetDivs[currentIndex % 3].style.opacity = 1;
+
+            currentIndex++;
+        }
+
+        // Initial display
+        showNextIdezet();
+
+        // Change quote every 5 seconds
+        setInterval(showNextIdezet, 5000);
+    </script>
+
+    
+</body>
+</html>
