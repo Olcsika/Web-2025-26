@@ -14,14 +14,11 @@
         }
     </style>
     <div>
-        <label for="sor">Sorok száma:</label>
-        <input type="number" id="sor" value="" min="1" max="">
-        <br>
-        <label for="oszlop">Oszlopok száma:</label>
-        <input type="number" id="oszlop" value="" min="1" max="20">
-        <br>
-        <label for="szin">Szín megadás</label>
+        <label for="szin">Mátrix szín megadás</label>
         <input id="szin" type="color">
+        <br>
+        <label for="szin">Betű szín megadás</label>
+        <input id="szin2" type="color">
         <br>
         <label>Hány pixel magas </label>
         <input type="number" id="magas">
@@ -29,22 +26,22 @@
         <label>Hány pixel széles</label>
         <input type="number" id="szeles">
         <br>
-        <button id="Keszit" onclick="Matrix()">Mátrix létrehozása</button>
-        <button onclick="Katt()">Szín állító</button>
+        <button id="Keszit" onclick="Matrix()">Mátrix létrehozása</button><br>
+        <button onclick="Katt()">Szín állító</button><br>
+        <button onclick="Betuszin()">Betű szín állító</button>
+        <button onclick="Betukeszit()">Betűkészít</button>
     </div>
     <div id="matrixContainer" style="margin-top:20px;"></div>
     <script>
         function Matrix(){
-            const sor = document.getElementById('sor').value;
-            const oszlop = document.getElementById('oszlop').value;
             const container = document.getElementById('matrixContainer');
             const magassag = document.getElementById("magas").value;
             const szeles = document.getElementById("szeles").value;
             container.innerHTML = '';
-            for(let i=0; i<sor; i++){
+            for(let i=0; i<5; i++){
                const row = document.createElement('div'); 
                 row.style.display = 'flex';
-                for(let j=0; j<oszlop; j++){
+                for(let j=0; j<9; j++){
                     const led = document.createElement('div');
                     led.style.width = szeles + "px";
                     led.style.height = magassag + "px";
@@ -63,6 +60,31 @@
                 
             
         }
+        function Betukeszit(){
+            const szin = document.getElementById("szin2").value;
+            const ledek = document.querySelectorAll('#matrixContainer div div');
+            const tomb=[
+            [0,0,0,0,1,0,0,0,0],
+            [0,0,0,1,0,1,0,0,0],
+            [0,0,1,1,1,1,1,0,0],
+            [0,1,0,0,0,0,0,1,0],
+            [1,0,0,0,0,0,0,0,1],
+            ];
+            let idx = 0;
+            for(let i=0; i<tomb.length; i++){
+                for(let j=0; j<tomb[i].length; j++){
+                    if (tomb[i][j] === 1) {
+                        ledek[idx].style.backgroundColor = szin;
+                    } else {
+                        ledek[idx].style.backgroundColor = "#fff";
+                    }
+                    idx++;
+                }
+            }
+
+
+        }
+        
     </script>
 </body>
 </html>
