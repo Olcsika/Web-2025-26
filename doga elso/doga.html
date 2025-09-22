@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+    <input id="bevitel" type="text">
+    <button onclick="Bevitel()">Hozzá ad</button>
+    <p>Törölni kattintással lehet</p>
+    <button onclick="Novekvo()">Növekvő sorrend</button>
+    <button onclick="Csokkeno()">Csökenő sorrend</button>
+    <ul id="ide">
+
+    </ul>
+    <script>
+        let bevitel = document.getElementById("bevitel"); 
+        let szavak = [];
+        function Bevitel(){
+            let sor = document.createElement("li");
+            szavak.push(bevitel.value)
+            sor.innerHTML = bevitel.value
+            //console.log(szavak)
+            //console.log(sor)
+            sor.addEventListener("click", function() {
+            document.getElementById("ide").removeChild(sor);
+            });
+
+            document.getElementById("ide").appendChild(sor);
+
+
+        }
+        
+        
+    </script>
+    
+</body>
+</html>
